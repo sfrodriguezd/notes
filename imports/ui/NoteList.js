@@ -6,16 +6,18 @@ import PropTypes from 'prop-types';
 import { Notes } from '../api/notes';
 import NoteListHeader from './NoteListHeader';
 import NoteListItem from './NoteListItem';
+import NoteListEmptyItem from './NoteListEmptyItem';
 
 export const NoteList = (props) => {
-  // const renderItem = (() => {
-  //   return
-  //   })
+    // if(props.notes.length === 0) {
+    //   return <NoteListEmptyItem/>
+    // }
 
   return (
     <div>
       <NoteListHeader/>
-      {/* { props.renderItem } */}
+      {/* <NoteListEmptyItem/> */}
+      { props.notes.length === 0 ? <NoteListEmptyItem/> : undefined }
       { props.notes.map((note) => {
           return <NoteListItem key={note._id} note={note}/>
         })
@@ -23,6 +25,8 @@ export const NoteList = (props) => {
       NoteList { props.notes.length }
     </div>
   );
+
+
 };
 
 NoteList.propTypes = {
