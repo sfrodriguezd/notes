@@ -15,7 +15,7 @@ export const NoteList = (props) => {
     // }
 
   return (
-    <div>
+    <div className="item-list">
       <NoteListHeader/>
       {/* <NoteListEmptyItem/> */}
       { props.notes.length === 0 ? <NoteListEmptyItem/> : undefined }
