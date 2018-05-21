@@ -11,7 +11,7 @@ export const NoteListItem = (props) => {
     }}>
       <h5>{ props.note.title || 'Untitled note' }</h5>
       { props.note.selected ? 'selected' : undefined }
-      <p>{ moment(props.note.updatedAt).format('DD/MM/YY') }</p>
+      <p>{ moment(props.note.updatedAt).format('DD/MM/YY, h:mm:ss') }</p>
     </div>
   )
 };

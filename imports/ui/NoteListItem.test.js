@@ -24,14 +24,14 @@ if ( Meteor.isClient ) {
       const wrapper = mount( <NoteListItem note={notes[0]} Session={Session}/>)
 
       expect(wrapper.find('h5').text()).toBe(notes[0].title);
-      expect(wrapper.find('p').text()).toBe('28/02/18');
+      expect(wrapper.find('p').text()).toBe('28/02/18, 12:55:24');
     });
 
     it('should set default title if no title set', function() {
       const wrapper = mount( <NoteListItem note={notes[1]} Session={Session}/>)
 
       expect(wrapper.find('h5').text()).toBe('Untitled note');
-      expect(wrapper.find('p').text()).toBe('28/02/18');
+      expect(wrapper.find('p').text()).toBe('28/02/18, 12:55:24');
     });
 
     it('should call set on click', function () {
