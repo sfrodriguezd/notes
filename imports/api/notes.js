@@ -2,12 +2,18 @@ import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
 import moment from 'moment';
 import SimpleSchema from 'simpl-schema';
+// import { Session } from 'meteor/session';
 
 export const Notes = new Mongo.Collection('notes');
+// const searchedValue = Session.get('searchedValue');
 
 if( Meteor.isServer) {
   Meteor.publish('notes', function () {
+    // if (!searchedValue) {
     return Notes.find({ userId: this.userId });
+    // } else {
+    //   return Notes.find({ userId: this.userId, $text: {$search: searchedValue} });
+    // }
   });
 }
 

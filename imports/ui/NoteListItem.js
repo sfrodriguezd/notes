@@ -12,7 +12,8 @@ export const NoteListItem = (props) => {
       props.Session.set('selectedNoteId', props.note._id);
     }}>
       <h5 className="item__title">{ props.note.title || 'Untitled note' }</h5>
-      <p className="item__subtitle">{ moment(props.note.updatedAt).format('DD/MM/YY, h:mm:ss') }</p>
+      <p className="item__subtitle">Modified { moment(props.note.updatedAt).fromNow() }</p>
+      {/* moment(props.note.updatedAt).format('DD/MM/YY, H:mm:ss') */}
     </div>
   )
 };

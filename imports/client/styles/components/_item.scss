@@ -13,6 +13,25 @@
   padding: $space;
 }
 
+.item-list__search {
+  display: flex;
+  flex-direction: column;
+  padding: $space;
+  padding-top: 0;
+}
+
+.item-list__input {
+  background: $button-secondary-bg;
+  border: 1px solid $button-secondary-border-color;
+  color: $button-secondary-color;
+  font-size: $base-font-size;
+  line-height: 1.2;
+  outline: none;
+  padding: $input-spacing;
+  padding-left: $input-spacing * 1.5;
+  padding-right: $input-spacing * 1.5;
+  border-radius: 20px;
+}
 // Item
 .item {
   border-left: $item-border-width solid transparent;
@@ -52,4 +71,12 @@
   font-style: italic;
   padding: $space;
   text-align: center;
+}
+
+.items__number {
+  color: $dark-grey;
+  font-style: italic;
+  padding-bottom: $space;
+  text-align: center;
+  margin-bottom: 0;
 }

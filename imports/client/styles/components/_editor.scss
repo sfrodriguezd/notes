@@ -17,8 +17,9 @@
 }
 
 .editor__body {
+  color: $dark-grey;
   flex-grow: 1;
-  font-weight: 300;
+  font-weight: 500;
   margin-bottom: $large-space;
   outline: none;
   padding: $input-spacing;

@@ -5,7 +5,8 @@
   cursor: pointer;
   font-size: $base-font-size;
   line-height: 1.2;
-  margin-bottom: $space;
+  // margin-bottom: $space;
+  outline: none;
   padding: $input-spacing;
   padding-left: $input-spacing * 1.5;
   padding-right: $input-spacing * 1.5;

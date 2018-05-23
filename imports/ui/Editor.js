@@ -45,7 +45,7 @@ export class Editor extends React.Component {
       return (
         <div className="editor">
           <input className="editor__title" value={this.state.title} placeholder="No title for the moment" onChange={this.handleTitleChange.bind(this)}/>
-          <textarea  className="editor__body" value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange.bind(this)}></textarea>
+          <textarea  className="editor__body" value={this.state.body} placeholder="Your note here" onChange={this.handleBodyChange.bind(this)}/>
           <div>
             <button className="button button--secondary" onClick={this.handleRemoval.bind(this)}>Delete Note</button>
           </div>
