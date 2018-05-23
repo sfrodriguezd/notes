@@ -16,10 +16,10 @@ Tracker.autorun(() => {
 
 Tracker.autorun(() => {
   const selectedNoteId = Session.get('selectedNoteId');
+  Session.set('isNavOpen', false);
 
   if (selectedNoteId) {
     browserHistory.replace(`/dashboard/${selectedNoteId}`);
-    Session.set('isNavOpen', false);
   }
 });
 
