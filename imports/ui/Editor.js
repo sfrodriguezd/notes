@@ -3,7 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Session } from 'meteor/session';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-import { browserHistory } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
 import { Notes } from '../api/notes';
 
@@ -27,7 +27,7 @@ export class Editor extends React.Component {
   }
   handleRemoval () {
     this.props.call('notes.remove', this.props.note._id);
-    this.props.browserHistory.push('/dashboard');
+    this.props.history.push('/dashboard');
   }
   componentDidUpdate(prevProps, prevState) {
     const currentNoteId = this.props.note ? this.props.note._id : undefined;
@@ -37,7 +37,12 @@ export class Editor extends React.Component {
       this.setState({
         title: this.props.note.title,
         body: this.props.note.body
-      })
+      });
+    }
+  }
+  componentDidMount() {
+    if (this.props.match) {
+      this.props.Session.set('selectedNoteId', this.props.match.params.id)
     }
   }
   render () {
@@ -55,7 +60,7 @@ export class Editor extends React.Component {
       return (
         <div className="editor">
           <p className="editor__message">
-            { this.props.selectedNoteId ? 'Note not found' : 'Pick or create a note to get started.'}
+            {this.props.selectedNoteId ? 'Note not found' : 'Pick or create a note to get started.'}
           </p>
         </div>
       );
@@ -67,17 +72,18 @@ Editor.propTypes = {
   note: PropTypes.object,
   selectedNoteId: PropTypes.string,
   call: PropTypes.func.isRequired,
-  browserHistory: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  Session: PropTypes.object.isRequired
 }
 
-export default createContainer(() => {
+export default withRouter(createContainer(() => {
   const selectedNoteId = Session.get('selectedNoteId');
 
   return {
     selectedNoteId,
     note: Notes.findOne(selectedNoteId),
     call: Meteor.call,
-    browserHistory
+    Session
   };
 
-}, Editor);
+}, Editor));

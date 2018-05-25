@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {Link} from 'react-router-dom';
 import {Accounts} from 'meteor/accounts-base';
 import { createContainer } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
@@ -8,13 +8,15 @@ export class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: ''
+      error: '',
+      email: '',
+      password: ''
     };
   }
   onSubmit(e){
+    let { email, password } = this.state;
+
     e.preventDefault();
-    let email = this.refs.email.value.trim();
-    let password = this.refs.password.value.trim();
 
     if (password.length < 9) {
       return this.setState({ error: 'Password must be more than 8 characters long.'});
@@ -28,6 +30,12 @@ export class Signup extends React.Component {
       }
     });
   }
+  onEmailChange(e) {
+    this.setState({ email: e.target.value.trim() });
+  }
+  onPasswordChange(e) {
+    this.setState({ password: e.target.value.trim() });
+  }
   render() {
     return (
       <div className="boxed-view">
@@ -38,15 +46,15 @@ export class Signup extends React.Component {
           { this.state.error && <p>{ this.state.error }</p> }
 
           <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view__form">
-            <input type="email" ref="email" name="email" placeholder="Email"/>
-            <input type="password" ref="password" name="password" placeholder="Password"/>
+            <input type="email" name="email" placeholder="Email" onChange={this.onEmailChange.bind(this)} value={this.state.email}/>
+            <input type="password" name="password" placeholder="Password" onChange={this.onPasswordChange.bind(this)} value={this.state.password}/>
             <button className="button">Create Account</button>
           </form>
 
           <Link to="/">Already have an account?</Link>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -57,5 +65,5 @@ Signup.propTypes = {
 export default createContainer(() => {
   return {
     createUser: Accounts.createUser
-  }
+  };
 }, Signup);
