@@ -13,7 +13,7 @@ export class NoteListSearchBar extends React.Component {
   }
 
   handleLookingFor(e) {
-    const searchedValue = e.target.value;
+    const searchedValue = e.target.value.toLowerCase();
     this.setState({ searchedValue });
     Session.set('searchedValue', searchedValue);
   }
