@@ -25,5 +25,3 @@ npm test
 ## Up and running
 
 Click here to open the app: https://notes-seb.herokuapp.com
-
-```
