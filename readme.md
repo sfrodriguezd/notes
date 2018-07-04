@@ -21,3 +21,9 @@ Running the tests is easy. All you have to do is run the following command and v
 ```
 npm test
 ```
+
+## Up and running
+
+Click here to open the app: https://notes-seb.herokuapp.com
+
+```
